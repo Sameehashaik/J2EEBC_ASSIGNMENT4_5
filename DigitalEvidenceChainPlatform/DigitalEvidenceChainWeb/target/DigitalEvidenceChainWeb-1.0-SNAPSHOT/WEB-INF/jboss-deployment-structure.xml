@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+
+  <!-- Optional: Global exclusions -->
+  <deployment>
+  <dependencies>
+      <module name="deployment.com.digital.evidence-DigitalEvidenceChainAuthEJB-1.0-SNAPSHOT.jar" export="true"/>
+      <module name="deployment.com.digital.evidence-DigitalEvidenceChainEJB-1.0-SNAPSHOT.jar" export="true"/>
+      <module name="jakarta.servlet.api" services="import"/>
+      <module name="jakarta.annotation.api" services="import"/>
+    </dependencies>
+    <exclusions>
+      <module name="javax.servlet.api"/>
+      <module name="javax.servlet.jsp.api"/>
+      <module name="javax.annotation.api"/>
+    </exclusions>
+  </deployment>
+  <sub-deployment name="com.digital.evidence-DigitalEvidenceChainWeb-1.0-SNAPSHOT.war">
+    <dependencies>
+      <!-- Allow Web to use classes from EJB and AuthEJB -->
+      <module name="deployment.com.digital.evidence-DigitalEvidenceChainEJB-1.0-SNAPSHOT.jar"/>
+      <module name="deployment.com.digital.evidence-DigitalEvidenceChainAuthEJB-1.0-SNAPSHOT.jar"/>
+    </dependencies>
+   </sub-deployment>
+    
+</jboss-deployment-structure>

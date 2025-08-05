@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>DigitalEvidenceChainPlatform</artifactId>
+    <groupId>com.digital.evidence</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.digital.evidence</groupId>
+  <artifactId>DigitalEvidenceChainApiWeb</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>DigitalEvidenceChainApiWeb</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+     <!-- Jackson JSON -->
+     <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
+         <artifactId>jackson-jakarta-rs-json-provider</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-annotations</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>com.fasterxml.jackson.datatype</groupId>
+         <artifactId>jackson-datatype-jsr310</artifactId>
+     </dependency>
+     <dependency>
+         <groupId>com.digital.evidence</groupId>
+         <artifactId>DigitalEvidenceChainAuthEJB</artifactId>
+         <version>1.0-SNAPSHOT</version>
+         <scope>compile</scope>
+     </dependency>
+     <!-- JPA API (only interfaces, entities are in EJB module) -->
+     <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+    </dependency>
+    <!-- Spring Web + MVC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+        <!-- Spring Security (for servlet filter-based security) -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+           <groupId>org.springframework.security</groupId>
+           <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+    <!-- JUnit 5 for controller and filter testing -->
+     <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+     </dependency>
+     <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-core</artifactId>
+     </dependency>
+     <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+     </dependency>
+     <dependency>
+        	<groupId>com.digital.evidence</groupId>
+        	<artifactId>DigitalEvidenceChainEJB</artifactId>
+        	<version>1.0-SNAPSHOT</version>
+        	<scope>compile</scope>
+        </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+           <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+           </plugin>
+
+           <plugin>
+             <artifactId>maven-war-plugin</artifactId>
+           </plugin>
+
+           <plugin>
+             <artifactId>maven-surefire-plugin</artifactId>
+           </plugin>
+        </plugins>
+  </build>
+</project>

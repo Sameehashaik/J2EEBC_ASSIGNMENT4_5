@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Evidence Management API
+  version: 1.0.0
+  description: API for managing digital evidence records.
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /evidence/all:
+    get:
+      summary: List all evidence records
+      tags: [Evidence]
+      responses:
+        '200':
+          description: List of evidence records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Evidence'
+
+  /evidence/{id}:
+    get:
+      summary: Get a single evidence record by ID
+      tags: [Evidence]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Evidence record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evidence'
+        '404':
+          description: Evidence not found
+
+    put:
+      summary: Update an existing evidence record
+      tags: [Evidence]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evidence'
+      responses:
+        '200':
+          description: Evidence updated
+        '400':
+          description: Invalid input
+        '404':
+          description: Evidence not found
+
+    delete:
+      summary: Delete an evidence record
+      tags: [Evidence]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Evidence deleted
+        '404':
+          description: Evidence not found
+
+  /evidence/save:
+    post:
+      summary: Create a new evidence record
+      tags: [Evidence]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evidence'
+      responses:
+        '201':
+          description: Evidence created
+        '400':
+          description: Invalid input
+
+  /evidence/filter:
+    get:
+      summary: Filter evidences by officer, encryption status, and date
+      tags: [Evidence]
+      parameters:
+        - in: query
+          name: officer
+          schema:
+            type: string
+        - in: query
+          name: encrypted
+          schema:
+            type: boolean
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Filtered evidence list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Evidence'
+
+components:
+  schemas:
+    Evidence:
+      type: object
+      required:
+        - description
+        - sourceOfficer
+        - encryptionStatus
+        - acquisitionDate
+        - custodyStatus
+      properties:
+        id:
+          type: integer
+          example: 101
+        description:
+          type: string
+          example: "Seized USB Drive"
+        sourceOfficer:
+          type: string
+          example: "Detective Jane Smith"
+        encryptionStatus:
+          type: boolean
+          example: true
+        acquisitionDate:
+          type: string
+          format: date
+          example: "2025-06-15"
+        custodyStatus:
+          type: string
+          enum: [IN_CUSTODY, RELEASED]
+          example: "IN_CUSTODY"

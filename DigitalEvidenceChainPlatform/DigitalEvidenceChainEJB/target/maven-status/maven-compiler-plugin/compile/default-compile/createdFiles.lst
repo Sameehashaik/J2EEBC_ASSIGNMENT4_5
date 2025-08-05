@@ -1,0 +1,9 @@
+com\digital\evidence\service\EvidenceServiceImpl.class
+com\digital\evidence\model\OllamaResponse.class
+com\digital\evidence\config\DigitalEvidenceChainConfig.class
+com\digital\evidence\service\EvidenceSummaryServiceImpl.class
+com\digital\evidence\model\Evidence.class
+com\digital\evidence\service\EvidenceService.class
+com\digital\evidence\service\EvidenceSummaryService.class
+com\digital\evidence\repository\EvidenceRepository.class
+com\digital\evidence\model\OllamaRequest.class

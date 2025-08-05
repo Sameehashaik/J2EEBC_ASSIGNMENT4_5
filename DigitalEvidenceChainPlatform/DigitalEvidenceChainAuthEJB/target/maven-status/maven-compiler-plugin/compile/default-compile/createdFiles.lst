@@ -1,0 +1,10 @@
+com\digital\evidence\auth\keycloack\service\KeycloakAuthService.class
+com\digital\evidence\auth\AppUserDetailsService.class
+com\digital\evidence\auth\keycloack\KeycloakTokenResponseModel.class
+com\digital\evidence\repository\AppUserRepository.class
+com\digital\evidence\entity\AppUser.class
+com\digital\evidence\service\AppUserServiceImpl.class
+com\digital\evidence\service\AppUserService.class
+com\digital\evidence\auth\keycloack\KeycloakTokenRequestModel.class
+com\digital\evidence\auth\keycloack\service\KeycloakAuthServiceImpl.class
+com\digital\evidence\config\DigitalEvidenceConfig.class

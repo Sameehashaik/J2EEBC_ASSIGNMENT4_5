@@ -1,0 +1,7 @@
+com\digital\evidence\config\AppConfig.class
+com\digital\evidence\config\SecurityConfig.class
+com\digital\evidence\controller\RootController.class
+com\digital\evidence\controller\UserController.class
+com\digital\evidence\controller\AuthController.class
+com\digital\evidence\controller\EvidenceController.class
+com\digital\evidence\config\WebMvcConfig.class

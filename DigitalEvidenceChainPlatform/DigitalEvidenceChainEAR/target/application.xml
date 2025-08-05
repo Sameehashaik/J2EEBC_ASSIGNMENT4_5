@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd" version="7">
+  <display-name>DigitalEvidenceChainEAR</display-name>
+  <module>
+    <web>
+      <web-uri>com.digital.evidence-DigitalEvidenceChainWeb-1.0-SNAPSHOT.war</web-uri>
+      <context-root>/</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>com.digital.evidence-DigitalEvidenceChainApiWeb-1.0-SNAPSHOT.war</web-uri>
+      <context-root>/api</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>com.digital.evidence-DigitalEvidenceChainEJB-1.0-SNAPSHOT.jar</ejb>
+  </module>
+  <module>
+    <ejb>com.digital.evidence-DigitalEvidenceChainAuthEJB-1.0-SNAPSHOT.jar</ejb>
+  </module>
+  <library-directory>lib</library-directory>
+</application>

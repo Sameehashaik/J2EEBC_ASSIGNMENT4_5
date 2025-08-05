@@ -1,0 +1,34 @@
+<!-- /WEB-INF/views/inCustodyEvidence.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+<div th:replace="fragments/header :: *"></div>
+
+<div class="container mt-4">
+    <h2>Evidence In Custody</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Officer</th>
+                <th>Encrypted</th>
+                <th>Acquired</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="e : ${evidences}">
+                <td th:text="${e.id}">1</td>
+                <td th:text="${e.description}">HDD</td>
+                <td th:text="${e.sourceOfficer}">Doe</td>
+                <td th:text="${e.encryptionStatus ? 'Yes' : 'No'}">Yes</td>
+                <td th:text="${e.acquisitionDate}">2025-06-30</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: *"></div>
+</body>
+</html>

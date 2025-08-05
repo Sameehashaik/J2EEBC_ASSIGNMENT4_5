@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.digital.evidence</groupId>
+    <artifactId>DigitalEvidenceChainPlatform</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.digital.evidence</groupId>
+  <artifactId>DigitalEvidenceChainEAR</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>DigitalEvidenceChainEAR</name>
+  <url>http://maven.apache.org</url>
+  <packaging>ear</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+        <!-- EJB Module -->
+        <dependency>
+            <groupId>com.digital.evidence</groupId>
+            <artifactId>DigitalEvidenceChainEJB</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+
+        <!-- Web Module -->
+        <dependency>
+            <groupId>com.digital.evidence</groupId>
+            <artifactId>DigitalEvidenceChainWeb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+
+        <!-- Auth Module -->
+        <dependency>
+            <groupId>com.digital.evidence</groupId>
+            <artifactId>DigitalEvidenceChainAuthEJB</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency> 
+        
+        <!-- API Web Module -->
+        <dependency>
+           <groupId>com.digital.evidence</groupId>
+           <artifactId>DigitalEvidenceChainApiWeb</artifactId>
+           <version>1.0-SNAPSHOT</version>
+           <type>war</type>
+           </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <webModule>
+                            <groupId>com.digital.evidence</groupId>
+                            <artifactId>DigitalEvidenceChainWeb</artifactId>
+                            <contextRoot>/</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>com.digital.evidence</groupId>
+                            <artifactId>DigitalEvidenceChainApiWeb</artifactId>
+                            <contextRoot>/api</contextRoot> <!-- ✅ -->
+                        </webModule>
+                        <ejbModule>
+                            <groupId>com.digital.evidence</groupId>
+                            <artifactId>DigitalEvidenceChainEJB</artifactId>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>com.digital.evidence</groupId>
+                            <artifactId>DigitalEvidenceChainAuthEJB</artifactId>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

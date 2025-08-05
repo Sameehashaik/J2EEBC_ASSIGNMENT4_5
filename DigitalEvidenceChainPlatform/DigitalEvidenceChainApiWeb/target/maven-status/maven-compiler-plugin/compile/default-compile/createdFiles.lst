@@ -1,0 +1,15 @@
+com\digital\evidence\api\service\KeycloakAuthApiServiceImpl.class
+com\digital\evidence\api\dto\EvidenceDTO.class
+com\digital\evidence\api\service\EvidenceApiService.class
+com\digital\evidence\api\service\AppUserApiServiceImpl.class
+com\digital\evidence\api\service\EvidenceApiServiceImpl.class
+com\digital\evidence\api\controller\AppUserRestController.class
+com\digital\evidence\api\controller\KeycloakTokenController.class
+com\digital\evidence\api\service\KeycloakAuthApiService.class
+com\digital\evidence\api\dto\KeycloakTokenResponseDTO.class
+com\digital\evidence\api\service\AppUserApiService.class
+com\digital\evidence\api\dto\AppUserDTO.class
+com\digital\evidence\api\AppConfig.class
+com\digital\evidence\api\controller\EvidenceRestController.class
+com\digital\evidence\api\dto\KeycloakTokenRequestDTO.class
+com\digital\evidence\api\SecurityConfig.class
