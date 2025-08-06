@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d58b9b49-8050-4f48-96b0-7318bfa66624",
+		"_postman_id": "31f054c6-4da3-4c8f-ae4b-6a10ae5d4bd4",
 		"name": "DigitalEvidenceChainAPI_Finalized",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31564931"
+		"_exporter_id": "37381701"
 	},
 	"item": [
 		{
@@ -42,7 +42,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3128/realms/digital-evidence-realm/protocol/openid-connect/token",
+					"raw": "http://localhost:3128/realms/digital-evidence/protocol/openid-connect/token",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -50,7 +50,7 @@
 					"port": "3128",
 					"path": [
 						"realms",
-						"digital-evidence-realm",
+						"digital-evidence",
 						"protocol",
 						"openid-connect",
 						"token"
@@ -195,6 +195,41 @@
 					"path": [
 						"users",
 						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AI Summary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/evidence/summary/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"evidence",
+						"summary",
+						"2"
 					]
 				}
 			},
