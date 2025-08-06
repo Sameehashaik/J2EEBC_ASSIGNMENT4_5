@@ -13,7 +13,6 @@
   <packaging>war</packaging>
 
   <name>DigitalEvidenceChainWeb</name>
-  <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <dependencies>
@@ -42,6 +41,7 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
         </dependency>
+        
         <!-- Spring Security (for servlet filter-based security) -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -51,6 +51,18 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
         </dependency>
+        
+        <!-- ADDED: Spring Security OAuth2 Client - CRITICAL for OAuth2 support -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

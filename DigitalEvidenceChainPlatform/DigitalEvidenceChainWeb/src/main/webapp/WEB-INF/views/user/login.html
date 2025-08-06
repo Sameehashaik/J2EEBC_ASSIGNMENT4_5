@@ -80,7 +80,13 @@
                         You have been logged out.
                     </div>
                 </form>
+				<div th:if="${param.error}" class="alert alert-danger mt-3">
+    <span th:if="${param.error == 'oauth2'}">SSO Login failed. Please contact support or try again.</span>
+    <span th:if="${param.error != 'oauth2'}">Invalid username or password.</span>
+</div>
+<a th:href="@{/oauth2/authorization/keycloak}" class="btn btn-primary">Login with SSO</a>
 
+				
                 <!-- Link to Create User Page -->
                 <div class="text-center mt-3">
                     <p class="mb-2">Don't have an account?</p>

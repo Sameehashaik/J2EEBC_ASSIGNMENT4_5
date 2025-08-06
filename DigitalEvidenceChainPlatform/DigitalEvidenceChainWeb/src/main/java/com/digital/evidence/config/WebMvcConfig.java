@@ -16,46 +16,62 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.digital.evidence.controller", "com.digital.evidence.auth" // ensure this is scanned
+@ComponentScan(basePackages = { 
+    "com.digital.evidence.controller", 
+    "com.digital.evidence.auth"
 })
 public class WebMvcConfig implements WebMvcConfigurer, ApplicationContextAware {
-
-	private ApplicationContext applicationContext;
-
-	@Override
-	public void setApplicationContext(ApplicationContext context) throws BeansException {
-		this.applicationContext = context;
-	}
-
-	@Bean
-	public SpringResourceTemplateResolver templateResolver() {
-		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		resolver.setCharacterEncoding("UTF-8");
-		resolver.setCacheable(false);
-		return resolver;
-	}
-
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine engine = new SpringTemplateEngine();
-		engine.setTemplateResolver(templateResolver());
-		return engine;
-	}
-
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		resolver.setCharacterEncoding("UTF-8");
-		return resolver;
-	}
-
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-	}
+    
+    private ApplicationContext applicationContext;
+    
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        this.applicationContext = context;
+    }
+    
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".html");
+        resolver.setTemplateMode("HTML");
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setCacheable(false);
+        return resolver;
+    }
+    
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.setTemplateResolver(templateResolver());
+        return engine;
+    }
+    
+    @Bean
+    public ViewResolver viewResolver() {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
+        return resolver;
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Static resources
+        registry.addResourceHandler("/css/**")
+                .addResourceLocations("/css/", "classpath:/static/css/");
+        
+        registry.addResourceHandler("/js/**")
+                .addResourceLocations("/js/", "classpath:/static/js/");
+        
+        // WebJars resources - this should fix the Bootstrap CSS issue
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/")
+                .resourceChain(false);
+        
+        // Favicon
+        registry.addResourceHandler("/favicon.ico")
+                .addResourceLocations("classpath:/static/");
+    }
 }
